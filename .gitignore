@@ -1,0 +1,8 @@
+test_code/
+NOTES
+Stats/
+.nextflow.log*
+.nextflow/
+work/
+bamQC_results
+samples.tsv
