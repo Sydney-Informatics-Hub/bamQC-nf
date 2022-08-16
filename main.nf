@@ -8,7 +8,7 @@ include { checkInputs } from './modules/check_cohort'
 include { samtoolsStats } from './modules/samtoolsStats'
 include { mosdepth } from './modules/mosdepth'
 include { qualimapBamqc } from './modules/qualimapBamqc'
-include { multiqc } from './modules/multiqc'
+//include { multiqc } from './modules/multiqc'
 
 /// Print a header for your pipeline 
 
