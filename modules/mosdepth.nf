@@ -27,6 +27,7 @@ process mosdepth {
         script:
         """
 	mosdepth --threads ${params.cpus} \
+	--no-per-base \
         ${sampleID} \
         ${bam}        
         """
