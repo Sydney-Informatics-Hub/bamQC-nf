@@ -97,11 +97,11 @@ Coming soon!
 
 ### Component tools
 
-singularity
-nextflow/20.07.1
-samtools/1.15
-qualimap/2.2.1
-mosdepth/0.3.1
+singularity  
+nextflow/20.07.1  
+samtools/1.15  
+qualimap/2.2.1  
+mosdepth/0.3.1  
 
 ### Reqired (minimum) inputs/parameters
 
