@@ -2,6 +2,7 @@
 <p align="center">
 :wrench: This pipeline is currently under development :wrench:
 </p>
+
 ## Description 
 
 Report summary statistics relating to quality of bam files with Nextflow. bamQC-nf is a Nextflow pipeline that runs the following tools using Singularity containers:
