@@ -13,7 +13,7 @@ Report summary statistics relating to quality of bam files with Nextflow. bamQC-
 ## Diagram
 
 <p align="center"> 
-![bamqc_workflow_diagram](https://user-images.githubusercontent.com/73086054/184797961-0ddd5d9a-d69c-4057-bae5-78a632fd1b68.png)
+<img src="https://user-images.githubusercontent.com/73086054/184803464-d3c5ef56-6d2f-4d27-b4e8-3d6786e3374d.png" width="80%">
 </p> 
 
 ## User guide
