@@ -76,9 +76,7 @@ Coming soon!
 ## Benchmarking
 Coming soon! 
 
-## Workflow summaries 
-### Metadata
-
+## Workflow summaries
 ### Metadata 
 |metadata field     | workflow_name / workflow_version  |
 |-------------------|:---------------------------------:|
