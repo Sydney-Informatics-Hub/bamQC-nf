@@ -21,7 +21,6 @@ process mosdepth {
         tuple val(sampleID), 
 	path("${sampleID}.mosdepth.global.dist.txt"), 
 	path("${sampleID}.mosdepth.summary.txt"),
-	path("${sampleID}.per-base.bed.gz"), 
 	emit: mos_depth
 
         script:
