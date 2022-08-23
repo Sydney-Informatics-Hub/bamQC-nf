@@ -82,7 +82,7 @@ Coming soon!
 |-------------------|:---------------------------------:|
 |Version            | 1.0                               |
 |Maturity           | under development                 |
-|Creators           | Georgie Samaha, Nandan Deshpande  |
+|Creators           | Georgie Samaha, Cali Willet  |
 |Source             | NA                                |
 |License            | GPL-3.0 license                   |
 |Workflow manager   | Nextflow                          |
