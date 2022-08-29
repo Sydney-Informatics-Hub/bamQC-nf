@@ -18,7 +18,6 @@ process samtoolsStats {
 
 	input:
 	tuple val(sampleID), file(bam)
-	file(ref)
 
 	output:
 	tuple val(sampleID), path("${sampleID}.samtools.stats"), emit: samtools_stats
@@ -26,7 +25,6 @@ process samtoolsStats {
 	script:
 	"""
 	samtools stats \
-        --reference ${params.ref} \
         --threads ${params.cpus} \
         ${bam} > ${sampleID}.samtools.stats
 	"""
