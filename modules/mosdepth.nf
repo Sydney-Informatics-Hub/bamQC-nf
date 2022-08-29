@@ -5,6 +5,7 @@ nextflow.enable.dsl=2
 
 // Define the process
 process mosdepth {
+	cpus "${params.cpus}"
 	debug true
         publishDir "${params.outDir}/${sampleID}", mode: 'copy'
 

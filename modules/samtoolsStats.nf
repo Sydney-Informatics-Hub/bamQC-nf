@@ -6,6 +6,7 @@ nextflow.enable.dsl=2
 // Define the process
 /// This example takes input manifest and capitalises sampleID
 process samtoolsStats {
+	cpus "${params.cpus}"
 	debug true 
 	publishDir "${params.outDir}/${sampleID}", mode: 'copy'
 	

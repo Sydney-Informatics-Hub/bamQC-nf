@@ -6,3 +6,5 @@ Stats/
 work/
 bamQC_results
 samples.tsv
+*.tsv
+runInfo/
