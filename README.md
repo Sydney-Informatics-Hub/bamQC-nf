@@ -15,7 +15,9 @@ A flexible pipeline for reporting summary statistics relating to quality of bam 
 ## Diagram
 
 <p align="center"> 
+
 <img src="https://user-images.githubusercontent.com/73086054/187155487-0b85634a-0495-4aff-8813-259314bf67ab.png" width="80%">
+
 </p> 
 
 ## User guide
