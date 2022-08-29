@@ -6,15 +6,16 @@
 ## Description 
 
 Report summary statistics relating to quality of bam files with Nextflow. bamQC-nf is a Nextflow pipeline that runs the following tools using Singularity containers:
-* Samtools stats: detailed summary statistics for bam files
-* Mosdepth: fast bam depth calculations 
-* Qualimap bamqc: quality evaluation of bam files
+* Samtools stats: detailed summary statistics for bam files (default) 
+* Samtools flagstats: high-level summary statistics for bam files (optional)
+* Mosdepth: fast bam depth calculations (default)
+* Qualimap bamqc: quality evaluation of bam files (default)
 * MultiQC: cohort-level summary report of pipeline outputs (currently under development)
 
 ## Diagram
 
 <p align="center"> 
-<img src="https://user-images.githubusercontent.com/73086054/184803464-d3c5ef56-6d2f-4d27-b4e8-3d6786e3374d.png" width="80%">
+<img src="https://user-images.githubusercontent.com/73086054/187125389-c816ccce-69f9-421b-aa55-fb1b8c0af707.png" width="80%">
 </p> 
 
 ## User guide
@@ -51,13 +52,19 @@ Samtools stats uses a reference genome to summarise the GC-depth and mismatches-
 To run the default pipeline, run the following command:   
 
 ```
-nextflow run main.nf --cohort <samples.tsv> --ref <ref.fasta> 
+nextflow run main.nf --cohort <samples.tsv> --ref <ref.fasta> --cpus <number of CPUs>
 ```
 
 Or run the following script after filling out the required input variables:  
 
 ```
 bash run_bamqc.sh
+```
+
+To run the pipeline with Samtools flagstat instead of Samtools stats, run the following:
+
+```
+nextflow run main.nf --cohort <samples.tsv> --ref <ref.fasta> --cpus <number of CPUs> --flagstat
 ```
 
 While some parameters have default values in the workflow, you can adjust any of them in running your command. See the `nextflow.config` file to adjust the defaults, or add the following flags to your run command:
