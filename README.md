@@ -15,9 +15,7 @@ A flexible pipeline for reporting summary statistics relating to quality of bam 
 ## Diagram
 
 <p align="center"> 
-
 <img src="https://user-images.githubusercontent.com/73086054/187155487-0b85634a-0495-4aff-8813-259314bf67ab.png" width="80%">
-
 </p> 
 
 ## User guide
@@ -45,16 +43,12 @@ Create a tab-delimited file listing all samples to be processed and their corres
 |sample5  |/path/to/sample5.bam  | /path/to/sample5.bam.bai  |
 |sample6  |/path/to/sample6.bam  | /path/to/sample6.bam.bai  |
 
-#### 3. Prepare reference assembly 
-
-Samtools stats uses a reference genome to summarise the GC-depth and mismatches-per-cycle calculation. Samtools expects the reference has been indexed with Samtools faidx. 
-
-#### 4. Run the pipeline
+#### 3. Run the pipeline
 
 To run the default pipeline with Samtools stats and mosdepth, run the following command:   
 
 ```
-nextflow run main.nf --cohort <samples.tsv> --ref <ref.fasta> --cpus <number of CPUs>
+nextflow run main.nf --cohort <samples.tsv> --cpus <number of CPUs>
 ```
 
 Or run the following script after filling out the required input variables:  
@@ -66,7 +60,7 @@ bash run_bamqc.sh
 For improved flexibility and speed, users can specify which tools to run in addition to and instead of default options. For example, to run the pipeline with Samtools flagstat instead of Samtools stats, run the following:
 
 ```
-nextflow run main.nf --cohort <samples.tsv> --ref <ref.fasta> --cpus <number of CPUs> --flagstat
+nextflow run main.nf --cohort <samples.tsv> --cpus <number of CPUs> --flagstat
 ```
 
 While some parameters have default values in the workflow, you can adjust any of them in running your command. See the `nextflow.config` file to adjust the defaults, or add the following flags to your run command:
@@ -116,14 +110,13 @@ mosdepth/0.3.1
 
 * indexed bam files
 * cohort file listing all samples to be processed. Columns are sampleID, bam, bai (tab-delimited text format)
-* reference assembly (fasta format)
 
 ## Help/FAQ/Troubleshooting
 
 ## Acknowledgements/citations/credits
 ### Authors 
 - Georgie Samaha (Sydney Informatics Hub, University of Sydney)   
-- Nandan Deshpande (Sydney Informatics Hub, University of Sydney)
+- Cali Willet (Sydney Informatics Hub, University of Sydney)
 
 ### Acknowledgements 
 Acknowledgements (and co-authorship, where appropriate) are an important way for us to demonstrate the value we bring to your research. Your research outcomes are vital for ongoing funding of the Sydney Informatics Hub and national compute facilities. We suggest including the following acknowledgement in any publications that follow from this work:  
