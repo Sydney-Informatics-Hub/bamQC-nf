@@ -6,6 +6,7 @@ nextflow.enable.dsl=2
 // Import subworkflows to be run in the workflow
 include { checkInputs } from './modules/check_cohort'
 include { samtoolsStats } from './modules/samtoolsStats'
+include { samtoolsFlag } from './modules/samtoolsFlagstats'
 include { mosdepth } from './modules/mosdepth'
 include { qualimapBamqc } from './modules/qualimapBamqc'
 //include { multiqc } from './modules/multiqc'
@@ -66,7 +67,11 @@ def helpMessage() {
 	
 	--outDir		Specify path to output directory. Default
 				is ./Stats_out.
+	
+	--cpus			Set the number of threads. Default is 4.
 
+	--flagstat		Run Samtools flagstat, rather than Samtools
+				stats. Default is samtools stats. 
     """.stripIndent()
 }
 
@@ -94,16 +99,21 @@ workflow {
 	cohort = checkInputs.out
 			.splitCsv(header: true, sep:"\t")
 			.map { row -> tuple(row.sampleID, file(row.bam), file(row.bai)) }
+  
+	if (params.flagstat) {
+	// Run samtoolsFlagstats
+	samtoolsFlag(cohort)
+	}
 
-	// Run samtoolsStats
-	samtoolsStats(cohort, file(params.ref))
-	
+        // Run samtoolsStats if --flagstat not specified
+        else { samtoolsStats(cohort, file(params.ref))
+        }
+
 	// Run mosdepth 
 	mosdepth(cohort)
 
 	// Run qualimapBamQC
 	qualimapBamqc(cohort)
-
 
 	// Run multiqc to aggregate reports
 	// Still under development
