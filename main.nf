@@ -61,14 +61,12 @@ def helpMessage() {
 				is ./samples.tsv
 	
   Optional Arguments:
-
-	--cpus			Specify how many threads to use for each 
-				process. Default is 8
 	
 	--outDir		Specify path to output directory. Default
 				is ./Stats_out
 	
 	--cpus			Set the number of threads. Default is 8.
+
 
 	--flagstat		Run Samtools flagstat, rather than Samtools
 				stats. Default is samtools stats. 
