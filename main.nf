@@ -6,7 +6,7 @@ nextflow.enable.dsl=2
 // Import subworkflows to be run in the workflow
 include { checkInputs } from './modules/check_cohort'
 include { samtoolsStats } from './modules/samtoolsStats'
-include { samtoolsFlag } from './modules/samtoolsFlagstats'
+include { sambambaFlag } from './modules/sambambaFlagstat'
 include { mosdepth } from './modules/mosdepth'
 include { qualimapBamqc } from './modules/qualimapBamqc'
 //include { multiqc } from './modules/multiqc'
@@ -58,20 +58,23 @@ def helpMessage() {
   Required Arguments:
 	
 	--cohort		Specify tab-separated input file. Default
-				is ./samples.txt
-
-	--ref			Specify full path and name of reference
-				assembly (format: fasta).
+				is ./samples.tsv
 	
   Optional Arguments:
+
+	--cpus			Specify how many threads to use for each 
+				process. Default is 8
 	
 	--outDir		Specify path to output directory. Default
-				is ./Stats_out.
+				is ./Stats_out
 	
-	--cpus			Set the number of threads. Default is 4.
+	--cpus			Set the number of threads. Default is 8.
 
 	--flagstat		Run Samtools flagstat, rather than Samtools
 				stats. Default is samtools stats. 
+
+	--qualimap		Run Qualimap bamqc tool (optional)
+
     """.stripIndent()
 }
 
@@ -82,7 +85,7 @@ workflow {
 // Show help message if --help is run or if any required params are not 
 // provided at runtime
 
-        if ( params.help || params.cohort == false || params.ref ==false ){
+        if ( params.help || params.cohort == false ){
         // Invoke the help function above and exit
               helpMessage()
               exit 1
@@ -101,19 +104,21 @@ workflow {
 			.map { row -> tuple(row.sampleID, file(row.bam), file(row.bai)) }
   
 	if (params.flagstat) {
-	// Run samtoolsFlagstats
-	samtoolsFlag(cohort)
+	// Run sambambaFlagstats
+	sambambaFlag(cohort)
 	}
 
         // Run samtoolsStats if --flagstat not specified
-        else { samtoolsStats(cohort, file(params.ref))
+        else { samtoolsStats(cohort)
         }
 
 	// Run mosdepth 
 	mosdepth(cohort)
 
+	if (params.qualimap) {
 	// Run qualimapBamQC
 	qualimapBamqc(cohort)
+	}
 
 	// Run multiqc to aggregate reports
 	// Still under development
