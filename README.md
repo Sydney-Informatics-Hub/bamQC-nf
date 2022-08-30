@@ -79,7 +79,7 @@ bash cleanup.sh
 Coming soon! 
 
 ## Benchmarking
-Coming soon! 
+Nextflow reports are stored in [benchmarkingReports](https://github.com/Sydney-Informatics-Hub/bamQC-nf/tree/main/benchmarkingReports) directory. 
 
 ## Workflow summaries
 ### Metadata 
