@@ -79,7 +79,26 @@ bash cleanup.sh
 Coming soon! 
 
 ## Benchmarking
-Nextflow reports are stored in [benchmarkingReports](https://github.com/Sydney-Informatics-Hub/bamQC-nf/tree/main/benchmarkingReports) directory. 
+- Nextflow `.html` reports are stored in [benchmarkingReports](https://github.com/Sydney-Informatics-Hub/bamQC-nf/tree/main/benchmarkingReports) directory.   
+- See [Nextflow's documentation](https://www.nextflow.io/docs/latest/tracing.html#trace-report) for a summary of the trace reports below.
+
+### 6 human samples (~x30 coverage) at Pawsey Nimbus cloud 
+|task_id|hash     |native_id|name            |status   |exit|submit                 |duration  |realtime  |%cpu |peak_rss|peak_vmem|rchar   |wchar   |
+|-------|---------|---------|----------------|---------|----|-----------------------|----------|----------|-----|--------|---------|--------|--------|
+|1      |db/1e5cbb|199553   |checkInputs (1) |CACHED   |0   |2022-08-29 03:57:13.578|149ms     |6ms       |40.6%|0       |0        |148.6 KB|702 B   |
+|4      |9a/ea46d5|646424   |sambambaFlag (2)|COMPLETED|0   |2022-08-29 09:37:17.128|6h 2m 14s |6h 2m 12s |7.3% |15.2 MB |1.2 GB   |80.2 GB |3.3 MB  |
+|11     |fd/d3f29b|646417   |sambambaFlag (5)|COMPLETED|0   |2022-08-29 09:37:17.117|6h 17m 11s|6h 17m 10s|7.2% |16.6 MB |1.2 GB   |85.4 GB |3.2 MB  |
+|10     |f1/674e79|646443   |mosdepth (5)    |COMPLETED|0   |2022-08-29 09:37:17.163|6h 17m 13s|6h 17m 10s|4.8% |2.9 MB  |11 MB    |85.5 GB |660.4 KB|
+|9      |b6/b99706|646432   |sambambaFlag (4)|COMPLETED|0   |2022-08-29 09:37:17.138|6h 59m 26s|6h 59m 25s|6.9% |16.4 MB |1.2 GB   |96 GB   |3.2 MB  |
+|6      |32/6c1eac|972781   |sambambaFlag (3)|COMPLETED|0   |2022-08-29 15:54:28.418|2h 15m 39s|2h 15m 37s|19.9%|15.3 MB |1.2 GB   |85.2 GB |3.5 MB  |
+|2      |25/43ea4d|972966   |sambambaFlag (1)|COMPLETED|0   |2022-08-29 15:54:29.868|2h 25m 24s|2h 25m 24s|20.7%|15.8 MB |1.2 GB   |100.6 GB|3.7 MB  |
+|3      |47/dd625b|1018279  |mosdepth (1)    |COMPLETED|0   |2022-08-29 16:36:43.625|1h 43m 12s|1h 43m 10s|18.7%|1.9 GB  |3.1 GB   |100.6 GB|854.8 KB|
+|12     |b4/3bc60d|958509   |mosdepth (6)    |COMPLETED|0   |2022-08-29 15:39:31.941|2h 53m 28s|2h 53m 25s|11.4%|2.8 MB  |11 MB    |103.1 GB|866.6 KB|
+|7      |19/794c1a|1134653  |mosdepth (3)    |COMPLETED|0   |2022-08-29 18:33:00.304|2h 8m 59s |2h 8m 58s |13.3%|2.8 GB  |4.1 GB   |85.3 GB |823.6 KB|
+|5      |d6/765991|1112947  |mosdepth (2)    |COMPLETED|0   |2022-08-29 18:19:55.913|2h 25m 27s|2h 25m 25s|11.3%|2.8 GB  |4.1 GB   |80.2 GB |728.6 KB|
+|13     |70/76bcbc|1099179  |sambambaFlag (6)|COMPLETED|0   |2022-08-29 18:10:07.355|2h 43m 13s|2h 43m 12s|18.9%|15 MB   |1.2 GB   |103.1 GB|3.6 MB  |
+|8      |71/3713ea|1112762  |mosdepth (4)    |COMPLETED|0   |2022-08-29 18:19:54.498|2h 38m 30s|2h 38m 29s|11.4%|1.9 GB  |3.1 GB   |96.1 GB |784.2 KB|
+
 
 ## Workflow summaries
 ### Metadata 
