@@ -8,3 +8,4 @@ bamQC_results
 samples.tsv
 *.tsv
 runInfo/
+benchmarkingReports/
