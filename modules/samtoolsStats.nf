@@ -17,10 +17,12 @@ process samtoolsStats {
         container "${params.samtools__container}"
 
 	input:
-	tuple val(sampleID), file(bam)
+	tuple val(sampleID), file(bam), file(bai)
 
 	output:
-	tuple val(sampleID), path("${sampleID}.samtools.stats"), emit: samtools_stats
+	tuple val(sampleID), 
+	path("${sampleID}.samtools.stats"), 
+	emit: stat_out
 
 	script:
 	"""

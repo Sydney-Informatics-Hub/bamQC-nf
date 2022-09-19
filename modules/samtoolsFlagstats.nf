@@ -19,7 +19,9 @@ process samtoolsFlag {
         tuple val(sampleID), file(bam)
 
         output:
-        tuple val(sampleID), path("${sampleID}.samtools.flagstats"), emit: samtools_flagstats
+        tuple val(sampleID), 
+        path("${sampleID}.samtools.flagstats"), 
+        emit: flagstat_out
 
         script:
         """

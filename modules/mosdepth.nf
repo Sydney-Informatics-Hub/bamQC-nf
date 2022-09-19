@@ -22,7 +22,7 @@ process mosdepth {
         tuple val(sampleID), 
 	path("${sampleID}.mosdepth.global.dist.txt"), 
 	path("${sampleID}.mosdepth.summary.txt"),
-	emit: mos_depth
+	emit: mosdepth_out
 
         script:
         """

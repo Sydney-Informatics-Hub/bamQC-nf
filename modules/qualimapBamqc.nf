@@ -19,7 +19,8 @@ process qualimapBamqc {
         tuple val(sampleID), file(bam)
 
         output:
-        tuple val(sampleID), file("./qualimap"), emit: qualimap
+        tuple val(sampleID), file("./qualimap"), 
+        emit: qualimap_out
 
         script:
         """

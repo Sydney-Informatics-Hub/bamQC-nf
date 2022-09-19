@@ -4,16 +4,18 @@
 nextflow.enable.dsl=2
 
 // Import subworkflows to be run in the workflow
-include { checkInputs } from './modules/check_cohort'
-include { samtoolsStats } from './modules/samtoolsStats'
-include { sambambaFlag } from './modules/sambambaFlagstat'
-include { mosdepth } from './modules/mosdepth'
-include { qualimapBamqc } from './modules/qualimapBamqc'
-//include { multiqc } from './modules/multiqc'
+include { checkInputs } 	from './modules/check_cohort'
+include { samtoolsStats } 	from './modules/samtoolsStats'
+include { samtoolsFlag } 	from './modules/samtoolsFlagstats'
+include { mosdepth } 		from './modules/mosdepth'
+include { qualimapBamqc } 	from './modules/qualimapBamqc'
+include { multiQC } 		from './modules/multiqc'
 
 /// Print a header for your pipeline 
 
 log.info """\
+
+
 
       ============================================
       ============================================
@@ -29,20 +31,18 @@ log.info """\
           `-..,..-'       `-..,..-'       `-..,..-'           
 
  
-                ~~~~ Version: 1.0 ~~~~
+		   ~~~~ Version: 1.0 ~~~~
  
 
  Created by the Sydney Informatics Hub, University of Sydney
 
  Find documentation and more info @ https://github.com/Sydney-Informatics-Hub/bamQC-nf
 
- Cite this pipeline @ INSERT DOI
-
  Log issues @ https://github.com/Sydney-Informatics-Hub/bamQC-nf/issues
 
  All default parameters are set in `nextflow.config`.
 
- """
+"""
 
 /// Help function 
 // This is an example of how to set out the help function that 
@@ -51,7 +51,6 @@ log.info """\
 
 def helpMessage() {
     log.info"""
-  OOPS, YOU FORGOT SOME REQUIRED ARGUMENTS!
 
   Usage:  nextflow run https://github.com/Sydney-Informatics-Hub/bamQC-nf --cohort <manifest.tsv>
 
@@ -101,26 +100,26 @@ workflow {
 			.splitCsv(header: true, sep:"\t")
 			.map { row -> tuple(row.sampleID, file(row.bam), file(row.bai)) }
   
-	if (params.flagstat) {
-	// Run sambambaFlagstats
-	sambambaFlag(cohort)
-	}
-
-        // Run samtoolsStats if --flagstat not specified
-        else { samtoolsStats(cohort)
-        }
-
-	// Run mosdepth 
+  	// Run mosdepth 
 	mosdepth(cohort)
 
+	// Run samtoolsFlagstats if --flagstat
+	if (params.flagstat) {
+		samtoolsFlag(cohort)
+	}
+     
+	// Run samtoolsStats if --flagstat not specified
+	else { samtoolsStats(cohort) }
+
+	// Run qualimapBamQC if --qualimap 
 	if (params.qualimap) {
-	// Run qualimapBamQC
-	qualimapBamqc(cohort)
+		qualimapBamqc(cohort)
 	}
 
-	// Run multiqc to aggregate reports
-	// Still under development
-	//multiqc() 
+	// Run multiqc to aggregate reports if --multiqc
+//	if(params.multiqc) {
+//		multiQC( mosdepth.out.mix(samtoolsStats.out).collect() ) 
+	}
 }}
 
 workflow.onComplete {

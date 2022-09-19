@@ -17,7 +17,7 @@ process sambambaFlag {
         tuple val(sampleID), file(bam)
 
         output:
-        tuple val(sampleID), path("${sampleID}.sambamba.flagstats"), emit: sambamba_flagstats
+        tuple val(sampleID), path("${sampleID}.sambamba.flagstats"), emit: in2multiqc
 
         script:
         """
